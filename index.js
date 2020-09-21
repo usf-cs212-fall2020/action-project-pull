@@ -36,8 +36,12 @@ Provide the pull request from your last code review below.
 
 ## Instructions
 
-A comment with the code quality of your project will be added *automatically* once this pull request is opened. Your code must have a \`B\` or above rating to quality.
-    `;
+A comment with a link to the [CodeClimate](https://codeclimate.com/) analysis of your repository will be added automatically once this pull request is opened.
+
+**Ignore the number of issues reported.** Click the "View more on Code Climate" link and then the "Overview" tab to view the rating for your repository.
+
+**Your code must have a \`B\` or above rating to qualify for code review.** If your rating is lower than that, close this pull request. Use the CodeClimate dashboard to identify issues, fix enough issues for the rating to improve to \`B\` or higher, and then create a **new release** before requesting code review.
+`;
 
     const request = await octokit.pulls.create({
       owner: context.payload.organization.login,
@@ -94,7 +98,7 @@ Identified [passing workflow run](${run_url}) for the \`${release}\` release.
 
   - [ ] Update the pull request body with your name, email, the verification issue, and the pull request from your last code review.
 
-  - [ ] Verify you have a \`B\` or higher rating of your code from CodeClimate. If not, **close this request**, fix the issues, and create a new release.
+  - [ ] Verify you have a \`B\` or higher rating of your code on the CodeClimate dashboard. If not, **close this request**, fix the issues, and create a new release.
 
   - [ ] Mark this pull request as [ready to review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review) when done!
 `
