@@ -23,9 +23,11 @@ Provide this information below so we know which grade to update.
 
 ### Last Code Review
 
+Provide the pull request from your last code review below.
+
 - **Pull Request**: [PULL_REQUEST]
 
-HERE HERE HERE
+:bulb: *Change the \`[PULL_REQUEST]\` to the pull request created by the instructor for your last code review. See [this guide](https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests) for how to link to pull requests. If this is your first code review, enter \`N/A\` instead.*
 
 ### Instructions
 
@@ -39,19 +41,16 @@ A comment with the code quality of your project will be added *automatically* on
       head: `review/${release}`,
       base: 'main',
       maintainer_can_modify: true,
+      draft: true,
       body: body
     });
 
     core.info(`Pull request #${request.data.number} created.`);
 
-    core.info(JSON.stringify(request));
-
     const miles = await octokit.issues.listMilestones({
       owner: context.payload.organization.login,
       repo: context.payload.repository.name,
     });
-
-    core.info(JSON.stringify(miles));
 
     const found = miles.data.find(r => r.title === `Project ${project}`);
 
@@ -59,6 +58,17 @@ A comment with the code quality of your project will be added *automatically* on
       core.setFailed(`Unable to find the "Project ${project}" milestone.`);
     }
     else {
+      await octokit.issues.createComment({
+        owner: context.payload.organization.login,
+        repo: context.payload.repository.name,
+        issue_number: request.data.number,
+        body: `
+## :tada: Release Verified!
+
+Identified [passing workflow run](${run_url}) for the \`${release}\` release.
+`
+      });
+
       await octokit.issues.update({
         owner: context.payload.organization.login,
         repo: context.payload.repository.name,
@@ -75,24 +85,13 @@ A comment with the code quality of your project will be added *automatically* on
         repo: context.payload.repository.name,
         issue_number: request.data.number,
         body: `
-## :tada: Release Verified!
-
-Identified [passing workflow run](${run_url}) for the \`${release}\` release.
-`
-      });
-
-      await octokit.issues.createComment({
-        owner: context.payload.organization.login,
-        repo: context.payload.repository.name,
-        issue_number: request.data.number,
-        body: `
 ### TODO @${context.actor}
 
-  - [ ] Update the pull request body with your name and email!
+  - [ ] Update the pull request body with your name, email, and the pull request from your last code review (or \`N/A\` if this is your first code review).
 
-### TODO @josecorella
+  - [ ] Verify you have a \`B\` or higher rating of your code from CodeClimate. If not, **close this request**, fix the issues, and create a new release.
 
-  - [ ] Please check if this release is ready for code review!
+  - [ ] Mark this pull request as [ready to review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review) when done!
 `
       });
 
