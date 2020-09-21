@@ -86,7 +86,7 @@ Identified [passing workflow run](${run_url}) for the \`${release}\` release.
         repo: context.payload.repository.name,
         issue_number: request.data.number,
         body: `
-### TODO @${context.actor}
+## :ballot_box_with_check: TODO @${context.actor}
 
   - [ ] Update the pull request body with your name, email, the verification issue, and the pull request from your last code review.
 
