@@ -28,7 +28,7 @@ Provide the pull request from your last code review below.
 - **Verification**: [VERIFY_ISSUE]
 - **Last Code Review**: [REVIEW_PR]
 
-:bulb: *Change \`[VERIFY_ISSUE]\` to the verification issue for this project and \`[REVIEW_PR]\` to the pull request created by the instructor for your last code review. See [this guide](https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests) for how to link to issues and pull requests. If this is your first code review, enter \`N/A\` for the "Last Code Review" field instead.*
+:bulb: *Change \`[VERIFY_ISSUE]\` to the verification issue for this project and \`[REVIEW_PR]\` to the pull request for your last code review. See [this guide](https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests) for how to link to issues and pull requests. If this is your first code review, enter \`N/A\` for the "Last Code Review" field instead.*
 
 ### Instructions
 
