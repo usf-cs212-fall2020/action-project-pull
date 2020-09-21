@@ -25,9 +25,10 @@ Provide this information below so we know which grade to update.
 
 Provide the pull request from your last code review below.
 
-- **Pull Request**: [PULL_REQUEST]
+- **Verification**: [VERIFY_ISSUE]
+- **Last Code Review**: [REVIEW_PR]
 
-:bulb: *Change the \`[PULL_REQUEST]\` to the pull request created by the instructor for your last code review. See [this guide](https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests) for how to link to pull requests. If this is your first code review, enter \`N/A\` instead.*
+:bulb: *Change \`[VERIFY_ISSUE]\` to the verification issue for this project and \`[REVIEW_PR]\` to the pull request created by the instructor for your last code review. See [this guide](https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests) for how to link to issues and pull requests. If this is your first code review, enter \`N/A\` for the "Last Code Review" field instead.*
 
 ### Instructions
 
@@ -87,7 +88,7 @@ Identified [passing workflow run](${run_url}) for the \`${release}\` release.
         body: `
 ### TODO @${context.actor}
 
-  - [ ] Update the pull request body with your name, email, and the pull request from your last code review (or \`N/A\` if this is your first code review).
+  - [ ] Update the pull request body with your name, email, the verification issue, and the pull request from your last code review.
 
   - [ ] Verify you have a \`B\` or higher rating of your code from CodeClimate. If not, **close this request**, fix the issues, and create a new release.
 
