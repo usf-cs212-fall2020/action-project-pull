@@ -12,25 +12,29 @@ async function run() {
     core.info(`Creating pull request for release ${release}...`);
 
     const body = `
-### Student Information
+## Student Information
 
 Provide this information below so we know which grade to update.
 
 - **Full Name**: [FULL_NAME]
 - **USF Email**: [USERNAME]
 
+<sub><em>
 :bulb: *Change the \`[FULL_NAME]\` and \`[USERNAME]\` fields above to your full name and USF username. Replace the \`[\` and \`]\` symbols as well. For example, enter \`Sophie Engle\` instead of \`[Sophie Engle]\` for the \`[FULL_NAME]\` field.*
+</em></sub>
 
-### Last Code Review
+## Last Code Review
 
 Provide the pull request from your last code review below.
 
 - **Verification**: [VERIFY_ISSUE]
 - **Last Code Review**: [REVIEW_PR]
 
+<sub><em>
 :bulb: *Change \`[VERIFY_ISSUE]\` to the verification issue for this project and \`[REVIEW_PR]\` to the pull request for your last code review. See [this guide](https://docs.github.com/en/github/writing-on-github/autolinked-references-and-urls#issues-and-pull-requests) for how to link to issues and pull requests. If this is your first code review, enter \`N/A\` for the "Last Code Review" field instead.*
+</em></sub>
 
-### Instructions
+## Instructions
 
 A comment with the code quality of your project will be added *automatically* once this pull request is opened. Your code must have a \`B\` or above rating to quality.
     `;
