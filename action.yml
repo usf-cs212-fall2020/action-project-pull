@@ -1,0 +1,16 @@
+name: 'Check Project Release Verification'
+description: 'Github Action to create a project code review pull request.'
+
+runs:
+  using: 'node12'
+  main: 'index.js'
+
+inputs:
+  token:
+    required: true
+  release_number:
+    required: true
+  project_number:
+    required: true
+  url:
+    required: true
