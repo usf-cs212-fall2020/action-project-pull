@@ -101,6 +101,8 @@ Identified [passing workflow run](${run_url}) for the \`${release}\` release.
   - [ ] Verify you have a \`B\` or higher rating of your code on the CodeClimate dashboard. If not, **close this request**, fix the issues, and create a new release.
 
   - [ ] Mark this pull request as [ready to review](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/changing-the-stage-of-a-pull-request#marking-a-pull-request-as-ready-for-review) when done!
+
+:stop_sign: **Do not merge or close this pull request** (unless you made a mistake)! If you close this request, it will not show up for the TA to approve and the instructor will be unable to complete the actual code review.
 `
       });
 
