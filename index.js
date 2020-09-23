@@ -43,19 +43,6 @@ A comment with a link to the [CodeClimate](https://codeclimate.com/) analysis of
 **Your code must have a \`B\` or above rating to qualify for code review.** If your rating is lower than that, close this pull request. Use the CodeClimate dashboard to identify issues, fix enough issues for the rating to improve to \`B\` or higher, and then create a **new release** before requesting code review.
 `;
 
-    const request = await octokit.pulls.create({
-      owner: context.payload.organization.login,
-      repo: context.payload.repository.name,
-      title: `Review: Project ${release}`,
-      head: `review/${release}`,
-      base: 'main',
-      maintainer_can_modify: true,
-      draft: true,
-      body: body
-    });
-
-    core.info(`Pull request #${request.data.number} created.`);
-
     const miles = await octokit.issues.listMilestones({
       owner: context.payload.organization.login,
       repo: context.payload.repository.name,
@@ -67,6 +54,19 @@ A comment with a link to the [CodeClimate](https://codeclimate.com/) analysis of
       core.setFailed(`Unable to find the "Project ${project}" milestone.`);
     }
     else {
+      const request = await octokit.pulls.create({
+        owner: context.payload.organization.login,
+        repo: context.payload.repository.name,
+        title: `Review: Project ${release}`,
+        head: `review/${release}`,
+        base: 'main',
+        maintainer_can_modify: true,
+        draft: true,
+        body: body
+      });
+
+      core.info(`Pull request #${request.data.number} created.`);
+
       await octokit.issues.createComment({
         owner: context.payload.organization.login,
         repo: context.payload.repository.name,
