@@ -67,6 +67,15 @@ A comment with a link to the [CodeClimate](https://codeclimate.com/) analysis of
 
       core.info(`Pull request #${request.data.number} created.`);
 
+      await octokit.pulls.requestReviewers({
+        owner: context.payload.organization.login,
+        repo: context.payload.repository.name,
+        pull_number: request.data.number,
+        reviewers: ['josecorella']
+      });
+
+      core.info(`Requested reviewers.`);
+
       await octokit.issues.createComment({
         owner: context.payload.organization.login,
         repo: context.payload.repository.name,
@@ -83,8 +92,7 @@ Identified [passing workflow run](${run_url}) for the \`${release}\` release.
         repo: context.payload.repository.name,
         issue_number: request.data.number,
         milestone: found.number,
-        labels: ['review', `project${project}`],
-        assignees: ['josecorella']
+        labels: ['review', `project${project}`]
       });
 
       core.info(`Details for pull request #${request.data.number} updated.`);
